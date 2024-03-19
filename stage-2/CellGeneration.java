@@ -10,7 +10,7 @@ public class CellGeneration {
     private GridState initalGrid;
 
     public CellGeneration(){
-        initalGrid = new GridState(10, seed);
+        // initalGrid = new GridState(10, seed);
         // initalGrid.printGrid();
     }
 
