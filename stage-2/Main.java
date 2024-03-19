@@ -1,21 +1,19 @@
 public class Main {
     public static void main(String[] args) {
-        GridState gridState = new GridState(6,3);
-        // gridState.printGrid();
-        System.out.println("==================================================");
-        // gridState.printEvolved();
-        gridState.printTest();
-
-
-
         String[][] grid = 
                        {{" ","O"," ","O"},
                         {"O","O","O","O"},
                         {" ","O"," ","O"},
                         {" ","O","O","O"}};
+        // System.out.println("==================================================");
+        // gridState.printEvolved();
+        // gridState.printGrid();
         
-        gridState.generateGrid(grid, grid.length);
+        GridState gridState = new GridState(grid, grid.length, 1);
         
+        gridState.generateGrid();
+        
+        gridState.printGrid();
         System.out.println(gridState.findNeighbors(grid, 1, 2));
     }
 }

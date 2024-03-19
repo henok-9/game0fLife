@@ -19,16 +19,25 @@ public class GridState{
         cellEvolution(genZero,3);
     }
 
-    public String[][] generateGrid(String[][] grid, int gridSize) {
-        for (int i = 0; i < gridSize; i++) {
-            for (int j = 0; j < gridSize; j++) {
+    // public String[][] generateGrid(String[][] grid, int gridSize) {
+    public void generateGrid() {
+        for (int i = 0; i < this.gridSize; i++) {
+            for (int j = 0; j < this.gridSize; j++) {
                 if (getGridState())
-                    grid[i][j] = "O";
+                    genZero[i][j] = "O";
                 else
-                    grid[i][j] = " ";
+                    genZero[i][j] = " ";
             }
         }
-        return grid;
+        // for (int i = 0; i < gridSize; i++) {
+        //     for (int j = 0; j < gridSize; j++) {
+        //         if (getGridState())
+        //             grid[i][j] = "O";
+        //         else
+        //             grid[i][j] = " ";
+        //     }
+        // }
+        // return grid;
     }
     
     public int findNeighbors(String[][] grid, int row, int col) {
