@@ -1,2 +1,5 @@
 stage-1/Map.class
 stage-1/Main.class
+
+#ignore all class files in every directory
+*.class

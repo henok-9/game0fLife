@@ -66,11 +66,31 @@ public class GridState{
         
         return numAliveNieghbors;
     }
+    
+    public String[][] cellEvolution(int numGen) {
+        String[][] nextGeneration = deepCopy(genZero);
+        for (int k = 0; k < numGen; k++) {
+            for (int i = 0; i < this.gridSize; i++) {
+                for (int j = 0; j < this.gridSize; j++) {
+                    int neighbors = findNeighbors(genZero, i, j);
+                    if (isCellAlive(genZero[i][j]) && (neighbors < 2 || neighbors > 3)) {
+                        // nextGeneration[i][j] = " ";
+                        killCell(nextGeneration, i, j);
+                    } else if (!isCellAlive(genZero[i][j]) && neighbors == 3) {
+                        // nextGeneration[i][j] = "O";
+                        reviveCell(nextGeneration, i, j);
+                    }
+                }
+            }
+            genZero = deepCopy(nextGeneration);
+        }
+        return genZero;
+    }
 
     // public String[][] cellEvolution(String[][] grid, int numGen) {
-    public String[][] cellEvolution(String[][] grid, String[][] evolved, int numGen) {
+    public String[][] cellEvolution(String[][] evolved, int numGen) {
         // String[][] evolved = new String[gridSize][gridSize];
-        evolved = deepCopy(grid); 
+        evolved = deepCopy(evolved); 
         for (int k = 0; k < numGen; k++) {
             String[][] nextGeneration = deepCopy(evolved); 
             for (int i = 0; i < this.gridSize; i++) {
@@ -78,22 +98,23 @@ public class GridState{
                     // System.out.print(findNeighbors(grid, i, j)+" ");
                     // if (isCellAlive(grid, i, j) && findNeighbors(grid, i, j) < 2 || 
                      
-                    if (isCellAlive(nextGeneration, i, j) && findNeighbors(nextGeneration, i, j) < 2)  {
-                        System.out.println("Cell Killed at: " + i + ", " + j); 
+                    if (isCellAlive(evolved, i, j) && findNeighbors(evolved, i, j) < 2 || findNeighbors(evolved, i, j) > 3)  {
+                        // System.out.println("Cell Killed at: " + i + ", " + j); 
                         killCell(nextGeneration, i, j);
                         // System.out.print("[K: "+killCell(grid, i, j)+"Neig: "+findNeighbors(grid, i, j)+" Idx: "+i+", "+j+"] ");
                         // System.out.println(Arrays.toString(grid[i]) + Arrays.toString(grid[j])); 
                         // evolved[i][j] = grid[i][j];
                     }
-                    if (isCellAlive(nextGeneration, i, j) && findNeighbors(nextGeneration, i, j) > 3){
-                        System.out.println("Cell Killed at: " + i + ", " + j); 
-                    // if (findNeighbors(grid, i, j) > 3){
-                        killCell(nextGeneration, i, j);
-                        // killCell(grid, i, j);
-                        // evolved[i][j] = grid[i][j];
-                        // System.out.print("[K: "+killCell(grid, i, j)+"Neig: "+findNeighbors(grid, i, j)+" Idx: "+i+", "+j+"] ");
-                    }
-                    if(!isCellAlive(nextGeneration, i, j) && findNeighbors(nextGeneration, i, j) == 3){
+                    // if (isCellAlive(nextGeneration, i, j) && findNeighbors(nextGeneration, i, j) > 3){
+                    //     // System.out.println("Cell Killed at: " + i + ", " + j); 
+                    // // if (findNeighbors(grid, i, j) > 3){
+                    //     killCell(nextGeneration, i, j);
+                    //     // killCell(grid, i, j);
+                    //     // evolved[i][j] = grid[i][j];
+                    //     // System.out.print("[K: "+killCell(grid, i, j)+"Neig: "+findNeighbors(grid, i, j)+" Idx: "+i+", "+j+"] ");
+                    // }
+                    else if(!isCellAlive(evolved, i, j) && findNeighbors(evolved, i, j) == 3){
+                        // System.out.println("Cell Revived at: " + i + ", " + j); 
                         reviveCell(nextGeneration, i, j);
                         // System.out.print("[R: "+reviveCell(grid, i, j)+" Neig: "+findNeighbors(grid, i, j)+" Idx: "+i+", "+j+"] ");
                         // System.out.print("check: "+findNeighbors(grid, i, j)+" ");
@@ -123,12 +144,12 @@ public class GridState{
         return grid[row][col] == "O" ? true : false;
     }
 
-    public String reviveCell(String[][] grid, int row, int col) {
-        return grid[row][col] = "O";
+    public void reviveCell(String[][] grid, int row, int col) {
+        grid[row][col] = "O";
     }
 
-    public String killCell(String[][] grid, int row, int col) {
-        return grid[row][col] = " ";
+    public void killCell(String[][] grid, int row, int col) {
+        grid[row][col] = " ";
     }
     
     public String[][] getGrid() {
