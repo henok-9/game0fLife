@@ -9,8 +9,8 @@ public class GridState{
     private String[][] genZero;
     private String[][] evolved;
 
-    public GridState(String[][] grid, int seed) {
-        // this.gridSize = gridSize;
+    public GridState(String[][] grid, int seed, int numGenerations) {
+        this.genZero = grid;
         this.seed = seed;
         random = new Random(this.seed);
         genZero = new String[gridSize][gridSize];
