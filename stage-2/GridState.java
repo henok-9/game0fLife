@@ -9,8 +9,8 @@ public class GridState{
     private String[][] genZero;
     private String[][] evolved;
 
-    public GridState(int gridSize, int seed) {
-        this.gridSize = gridSize;
+    public GridState(String[][] grid, int seed) {
+        // this.gridSize = gridSize;
         this.seed = seed;
         random = new Random(this.seed);
         genZero = new String[gridSize][gridSize];
@@ -19,15 +19,16 @@ public class GridState{
         cellEvolution(genZero,3);
     }
 
-    public void generateGrid() {
-        for (int i = 0; i < this.gridSize; i++) {
-            for (int j = 0; j < this.gridSize; j++) {
+    public String[][] generateGrid(String[][] grid, int gridSize) {
+        for (int i = 0; i < gridSize; i++) {
+            for (int j = 0; j < gridSize; j++) {
                 if (getGridState())
-                    genZero[i][j] = "O";
+                    grid[i][j] = "O";
                 else
-                    genZero[i][j] = " ";
+                    grid[i][j] = " ";
             }
         }
+        return grid;
     }
     
     public int findNeighbors(String[][] grid, int row, int col) {
