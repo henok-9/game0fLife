@@ -177,6 +177,21 @@ public class GridState{
             System.out.println(Arrays.toString(grid[i]));
         }
     }
+    // simulate the evolution of the grid live using Thread.sleep
+    public void simulateEvolution(int numGen) {
+        for (int i = 0; i < numGen; i++) {
+            try {
+                System.out.println("Generation: " + i);
+                Thread.sleep(700);
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                cellEvolution(numGen);
+                printGrid();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
    
     //duplicate 
     // public String[][] _cellEvolution(String[][] grid, String[][] evolved, int numGen) {
