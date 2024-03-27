@@ -98,7 +98,9 @@ public class GridState{
                     // System.out.print(findNeighbors(grid, i, j)+" ");
                     // if (isCellAlive(grid, i, j) && findNeighbors(grid, i, j) < 2 || 
                      
-                    if (isCellAlive(evolved, i, j) && findNeighbors(evolved, i, j) < 2 || findNeighbors(evolved, i, j) > 3)  {
+                    if (isCellAlive(evolved, i, j) && findNeighbors(evolved, i, j) < 2 || 
+                        findNeighbors(evolved, i, j) > 3)  {
+
                         // System.out.println("Cell Killed at: " + i + ", " + j); 
                         killCell(nextGeneration, i, j);
                         // System.out.print("[K: "+killCell(grid, i, j)+"Neig: "+findNeighbors(grid, i, j)+" Idx: "+i+", "+j+"] ");
@@ -165,9 +167,13 @@ public class GridState{
             System.out.println(Arrays.toString(genZero[i]));
         }
     }
-    // public void printEvolved() {
+
+    // public void printGrid() {
     //     for (int i = 0; i < gridSize; i++) {
-    //         System.out.println(Arrays.toString(evolved[i]));
+    //         for (int j = 0; j < gridSize; j++) {
+    //             System.out.print(genZero[i][j]);
+    //         }
+    //         System.out.println();
     //     }
     // }
     
@@ -177,12 +183,12 @@ public class GridState{
             System.out.println(Arrays.toString(grid[i]));
         }
     }
-    // simulate the evolution of the grid live using Thread.sleep
+    // simulate the evolution of the grid by clearing the console and printing the grid
     public void simulateEvolution(int numGen) {
         for (int i = 0; i < numGen; i++) {
             try {
                 System.out.println("Generation: " + i);
-                Thread.sleep(700);
+                Thread.sleep(800);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 cellEvolution(numGen);
