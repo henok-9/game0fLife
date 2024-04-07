@@ -1,5 +1,5 @@
 stage-1/Map.class
 stage-1/Main.class
-stage-2/Main.class
-stage-2/GridState.class
-stage-2/CellGeneration.class
+
+#ignore all class files in every directory
+*.class

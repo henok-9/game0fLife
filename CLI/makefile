@@ -10,7 +10,7 @@ all: compile run
 compile: $(FILES:.java=.class)
 
 run:
-	java Main
+	java DisplayGrid.java
 
 # Target to clean compiled class files
 clean:
