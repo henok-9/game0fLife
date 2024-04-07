@@ -1,4 +1,4 @@
-FILES := DisplayGrid.java GridState.java CellGeneration.java
+FILES := DisplayGrid.java GridState.java CellGeneration.java GameOfLifeGUI.java CustomCellPanel.java
 
 # Default target to compile specified Java files
 all: compile run
@@ -10,8 +10,8 @@ all: compile run
 compile: $(FILES:.java=.class)
 
 run:
-	java DisplayGrid 
-
+	# java DisplayGrid 
+	java GameOfLifeGUI
 # Target to clean compiled class files
 clean:
 	rm -f *.class

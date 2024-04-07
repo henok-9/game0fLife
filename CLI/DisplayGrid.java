@@ -1,9 +1,9 @@
 public class DisplayGrid {
     public static void main(String[] args) {
-        int row = 25;
-        int col = 25;
-        int seed = 62;
-        int numGenerations = 53;
+        int row = 32;
+        int col = 32;
+        int seed = 43;
+        int numGenerations = 50;
 
         String[][] grid = new String[row][col];
         GridState gridState = new GridState(grid, grid.length, seed);
@@ -15,3 +15,7 @@ public class DisplayGrid {
 
     }
 }
+
+
+
+
