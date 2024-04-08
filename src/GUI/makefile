@@ -1,4 +1,4 @@
-FILES := DisplayGrid.java GridState.java CellGeneration.java GameOfLifeGUI.java CustomCellPanel.java
+FILES := GridState.java GameOfLifeGUI.java CustomCellPanel.java
 
 # Default target to compile specified Java files
 all: compile run

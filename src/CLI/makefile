@@ -1,4 +1,4 @@
-FILES := Main.java Map.java 
+FILES := GridState.java DisplayGrid.java 
 
 # Default target to compile specified Java files
 all: compile run
