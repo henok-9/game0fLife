@@ -1,8 +1,10 @@
-# COMP2800: Game of Life
+<h1 align="center"> COMP2800: Game of Life</h1>
 
-This project implements the classic cellular automata, Conway's Game of Life in Java. 
+<p align="center">Java implementation of Conway's Game of Life, the classic cellular automaton. </p>
 
-![header](assets/header.gif)
+<p align="center">
+  <img src="assets/header.gif "/>
+</p>
 
 
 ## Features
